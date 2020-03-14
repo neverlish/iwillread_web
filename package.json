@@ -6,13 +6,22 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "codegen": "npx apollo codegen:generate --endpoint=http://localhost:4000 --target typescript --no-addTypename"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "apollo-cache-inmemory": "^1.6.5",
+    "apollo-client": "^2.6.8",
+    "apollo-link-http": "^1.5.16",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "isomorphic-unfetch": "^3.0.0",
     "next": "^9.3.0",
+    "next-with-apollo": "^5.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },
