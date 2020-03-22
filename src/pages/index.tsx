@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { Spin } from 'antd';
 import gql from 'graphql-tag';
 import React from 'react';
-import Book from '../components/molecules/Book';
+import Book, { BOOK_FRAGMENT } from '../components/molecules/Book';
 import Layout from '../components/templates/Layout';
 import { Books, BooksVariables } from '../types/Books';
 
@@ -13,19 +13,10 @@ interface IndexPageProps {
 const BOOKS_QUERY = gql`
   query Books($query: String) {
     books(where: { OR: [{ name_contains: $query }, { hashtags_some: { name_contains: $query } }, { author: { name_contains: $query } }] } ) {
-      id
-      name
-      author {
-        id
-        name
-      }
-      datePublished
-      coverImage
-      hashtags {
-        name
-      }
+      ...BookFragment
     }
   }
+  ${BOOK_FRAGMENT}
 `;
 
 const IndexPage = ({ query }: IndexPageProps) => {

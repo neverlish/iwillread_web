@@ -3,6 +3,23 @@ import { format } from 'date-fns';
 import React from 'react';
 import { Books_books } from '../../types/Books';
 import Link from 'next/link';
+import gql from 'graphql-tag';
+
+export const BOOK_FRAGMENT = gql`
+  fragment BookFragment on Book {
+    id
+    name
+    author {
+      id
+      name
+    }
+    datePublished
+    coverImage
+    hashtags {
+      name
+    }
+  }
+`
 
 const Book = ({ book }: { book: Books_books }) => {
   return (
