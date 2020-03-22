@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/react-hooks';
+import { Spin } from 'antd';
 import gql from 'graphql-tag';
 import React from 'react';
 import Book from '../components/molecules/Book';
@@ -28,12 +29,13 @@ const BOOKS_QUERY = gql`
 `;
 
 const IndexPage = ({ query }: IndexPageProps) => {
-  const { data } = useQuery<Books, BooksVariables>(BOOKS_QUERY, { variables: { query } });
-
+  const { data, loading } = useQuery<Books, BooksVariables>(BOOKS_QUERY, { variables: { query } });
   return <Layout>
-    {data?.books.map((book) =>
-      book && <Book book={book} key={book.id} />
-    )}
+    {loading
+      ? <Spin tip='Loading...' />
+      : data?.books.map((book) =>
+        book && <Book book={book} key={book.id} />
+      )}
   </Layout>
 }
 
