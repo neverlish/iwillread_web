@@ -23,13 +23,13 @@ export const BOOK_FRAGMENT = gql`
 
 const Book = ({ book }: { book: Books_books }) => {
   return (
-    <Card title={book.name} style={{ width: '300px' }}>
+    <Card title={<Link href={`/books/${book.id}`}><a>{book.name}</a></Link>} style={{ width: '300px' }}>
       <p>
-        <Link href={`/author/${book.author.name}`}><a>{book.author.name}</a></Link> | {format(new Date(book.datePublished), 'yyyy.MM.dd.')}
+        <Link href={`/authors/${book.author.name}`}><a>{book.author.name}</a></Link> | {format(new Date(book.datePublished), 'yyyy.MM.dd.')}
       </p>
       <img src={book.coverImage} height={150} />
       <div>
-        {book.hashtags?.map((hashtag) => <Link href={`/tag/${hashtag.name}`} key={hashtag.name}><a>#{hashtag.name}</a></Link>)}
+        {book.hashtags?.map((hashtag) => <Link href={`/hashtags/${hashtag.name}`} key={hashtag.name}><a>#{hashtag.name}</a></Link>)}
       </div>
     </Card>
   )
