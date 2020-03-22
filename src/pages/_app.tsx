@@ -1,9 +1,9 @@
 import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-client';
 import App from 'next/app';
-import React, { ReactNode } from 'react';
+import React from 'react';
 import withApollo from '../util/apollo';
 
+import 'antd/dist/antd.css';
 
 class MyApp extends App {
   render() {

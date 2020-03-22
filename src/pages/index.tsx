@@ -1,6 +1,8 @@
 import React from 'react';
-import { BASE_URL } from '../util/apollo';
+import Layout from '../components/templates/Layout';
 
 export default () => {
-  return <a href={`${BASE_URL}/auth/google/login`}>button</a>
+  return <Layout>
+    123123
+  </Layout>
 }
