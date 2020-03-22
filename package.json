@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "codegen": "npx apollo codegen:generate --endpoint=http://localhost:4000/graphql --target typescript --no-addTypename"
+    "codegen": "npx apollo codegen:generate --endpoint=http://localhost:4000/graphql --target typescript --no-addTypename --outputFlat src/types"
   },
   "keywords": [],
   "author": "",

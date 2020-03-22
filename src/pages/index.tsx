@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import React from 'react';
 import Book from '../components/molecules/Book';
 import Layout from '../components/templates/Layout';
-import { Books, BooksVariables } from './__generated__/Books';
+import { Books, BooksVariables } from '../types/Books';
 
 interface IndexPageProps {
   query?: string;

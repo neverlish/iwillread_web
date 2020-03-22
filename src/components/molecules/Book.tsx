@@ -1,7 +1,7 @@
 import { Card } from 'antd';
 import { format } from 'date-fns';
 import React from 'react';
-import { Books_books } from '../../pages/__generated__/Books';
+import { Books_books } from '../../types/Books';
 import Link from 'next/link';
 
 const Book = ({ book }: { book: Books_books }) => {
