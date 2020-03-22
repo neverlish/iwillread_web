@@ -1,24 +1,38 @@
 import { useQuery } from '@apollo/react-hooks';
-import { Breadcrumb, Button, Layout } from 'antd';
+import { Button, Input, Layout } from 'antd';
 import gql from 'graphql-tag';
-import React from 'react';
+import React, { useState } from 'react';
 import { BASE_URL } from '../../util/apollo';
+import { useRouter } from 'next/router';
 
 const { Header, Content, Footer } = Layout;
 
 const ME_QUERY = gql`
-  query {
+  query Me {
     me {
       email
     }
   }
 `
 
-export default ({ children }: { children: JSX.Element | string }) => {
+export default ({ children }: { children: JSX.Element | (JSX.Element | string | undefined | null)[] | string | undefined }) => {
   const { data } = useQuery(ME_QUERY);
+  const [query, setQuery] = useState('');
+  const router = useRouter();
 
   return <Layout>
     <Header>
+      <Input.Search
+        value={query}
+        onInput={(e) => setQuery((e.target as any).value)}
+        style={{ width: '130px' }}
+        onKeyPress={(e) => {
+          if (e.charCode === 13) {
+            router.push(query ? `/index?query=${query}` : '/');
+          }
+        }}
+        onSearch={() => router.push(query ? `/index?query=${query}` : '/')}
+      />
       <div style={{ float: 'right' }}>
         {data && data.me
           ? <Button>{data.me.email}</Button>
@@ -27,9 +41,7 @@ export default ({ children }: { children: JSX.Element | string }) => {
       </div>
     </Header>
     <Content style={{ padding: '30px' }}>
-      <div style={{ backgroundColor: '#fff', padding: '24px', minHeight: '280px' }}>
-        {children}
-      </div>
+      {children}
     </Content>
     <Footer>
       2020 iwillread

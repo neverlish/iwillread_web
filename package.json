@@ -7,7 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "codegen": "npx apollo codegen:generate --endpoint=http://localhost:4000 --target typescript --no-addTypename"
+    "codegen": "npx apollo codegen:generate --endpoint=http://localhost:4000/graphql --target typescript --no-addTypename"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "apollo-client": "^2.6.8",
     "apollo-link-context": "^1.0.19",
     "apollo-link-http": "^1.5.16",
+    "date-fns": "^2.11.0",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "isomorphic-unfetch": "^3.0.0",
