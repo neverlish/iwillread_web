@@ -74,6 +74,22 @@ function BookPage() {
         <img src={book.coverImage} width={100} />
         <p>{book.description}</p>
       </Col>
+      <Col span={12}>
+        <List
+          itemLayout='horizontal'
+          dataSource={bookReadData}
+          renderItem={item => (
+            <li>
+              <Rate defaultValue={item.rating} allowHalf disabled />
+              <Comment
+                author={item.author}
+                content={item.content}
+                datetime={item.datetime}
+              />
+            </li>
+          )}
+        />
+      </Col>
     </Row>
   </Layout>
 }
